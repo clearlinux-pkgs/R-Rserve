@@ -4,7 +4,7 @@
 #
 Name     : R-Rserve
 Version  : 1.7.3
-Release  : 1
+Release  : 2
 URL      : https://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz
 Summary  : Binary R server
