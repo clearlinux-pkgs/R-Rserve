@@ -4,7 +4,7 @@
 #
 Name     : R-Rserve
 Version  : 1.7.3
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz
 Summary  : Binary R server
@@ -15,14 +15,13 @@ BuildRequires : buildreq-R
 BuildRequires : openssl-dev
 
 %description
-which allows binary requests to be sent to R. Every
-	     connection has a separate workspace and working
-	     directory. Client-side implementations are available
-	     for popular languages such as C/C++ and Java, allowing
-	     any application to use facilities of R without the need of
-	     linking to R code. Rserve supports remote connection,
-	     user authentication and file transfer. A simple R client
-	     is included in this package as well.
+This directory contains a sample C++ client for Rserve
+You can compile this client without R. Just run "configure" in the
+Rserve directory, a corresponding Makefile will be automatically
+generated.
+Win32: There is no configure for Windows, but there is a special
+Makefile.win to build it - use "make -f Makefile.win" - it requires
+MinGW (or compatible) and GNU make.
 
 %package lib
 Summary: lib components for the R-Rserve package.
@@ -40,10 +39,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542431342
+export SOURCE_DATE_EPOCH=1552787081
 
 %install
-export SOURCE_DATE_EPOCH=1542431342
+export SOURCE_DATE_EPOCH=1552787081
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -79,8 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library Rserve|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  Rserve || :
 
 
 %files
