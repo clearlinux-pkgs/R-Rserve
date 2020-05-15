@@ -4,7 +4,7 @@
 #
 Name     : R-Rserve
 Version  : 1.7.3.1
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/Rserve_1.7-3.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/Rserve_1.7-3.1.tar.gz
 Summary  : Binary R server
@@ -13,16 +13,16 @@ License  : GPL-2.0 LGPL-2.1
 Requires: R-Rserve-lib = %{version}-%{release}
 BuildRequires : buildreq-R
 BuildRequires : openssl-dev
-BuildRequires : util-linux
 
 %description
-This directory contains a sample C++ client for Rserve
-You can compile this client without R. Just run "configure" in the
-Rserve directory, a corresponding Makefile will be automatically
-generated.
-Win32: There is no configure for Windows, but there is a special
-Makefile.win to build it - use "make -f Makefile.win" - it requires
-MinGW (or compatible) and GNU make.
+which allows binary requests to be sent to R. Every
+	     connection has a separate workspace and working
+	     directory. Client-side implementations are available
+	     for popular languages such as C/C++ and Java, allowing
+	     any application to use facilities of R without the need of
+	     linking to R code. Rserve supports remote connection,
+	     user authentication and file transfer. A simple R client
+	     is included in this package as well.
 
 %package lib
 Summary: lib components for the R-Rserve package.
@@ -34,21 +34,22 @@ lib components for the R-Rserve package.
 
 %prep
 %setup -q -c -n Rserve
+cd %{_builddir}/Rserve
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571898124
+export SOURCE_DATE_EPOCH=1589525669
 
 %install
-export SOURCE_DATE_EPOCH=1571898124
+export SOURCE_DATE_EPOCH=1589525669
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
