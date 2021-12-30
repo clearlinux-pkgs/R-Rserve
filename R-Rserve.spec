@@ -4,7 +4,7 @@
 #
 Name     : R-Rserve
 Version  : 1.8.10
-Release  : 34
+Release  : 35
 URL      : https://cran.r-project.org/src/contrib/Rserve_1.8-10.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/Rserve_1.8-10.tar.gz
 Summary  : Binary R server
