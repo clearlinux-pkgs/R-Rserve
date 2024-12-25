@@ -1,5 +1,5 @@
 PKG_NAME := R-Rserve
-URL = https://cran.r-project.org/src/contrib/Rserve_1.8-13.tar.gz
+URL = https://ftp.osuosl.org/pub/cran/src/contrib/Rserve_1.8-15.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
